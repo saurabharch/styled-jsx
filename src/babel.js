@@ -16,14 +16,14 @@ const STYLE_COMPONENT_CSS = 'css'
 
 export default function ({types: t}) {
   const isGlobalEl = el => el.attributes.some(attr => (
-    attr.name.name === GLOBAL_ATTRIBUTE
+    attr && attr.name && attr.name.name === GLOBAL_ATTRIBUTE
   ))
 
   const isStyledJsx = ({node: el}) => (
     t.isJSXElement(el) &&
     el.openingElement.name.name === 'style' &&
     el.openingElement.attributes.some(attr => (
-      attr.name.name === STYLE_ATTRIBUTE
+      attr && attr.name && attr.name.name === STYLE_ATTRIBUTE
     ))
   )
 
